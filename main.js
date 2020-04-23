@@ -146,7 +146,7 @@ var showInstructions = function()
 {
     console.log("### Istruzioni ###");
     console.log("Le interfacce di rete su questo dispositivo sono:");
-    instructions_text ="### Istruzioni ###<br>Le interfacce di rete su questo dispositivo sono:<br>";
+    instructions_text ="### Istruzioni ###<br>Lista di IP_ADDRESS disponibili:<br>";
 
     var device_ip = '';
 
@@ -165,19 +165,23 @@ var showInstructions = function()
         if (alias >= 1) {
         // this single interface has multiple ipv4 addresses
         console.log(ifname + ':' + alias, iface.address);
-        instructions_text += ifname + ':' + alias + " " + iface.address + "<br>";
+        // instructions_text += ifname + ':' + alias + " " + iface.address + "<br>";
+        instructions_text += iface.address + "<br>";
+
         } else {
         // this interface has only one ipv4 adress
         console.log(ifname, iface.address);
         device_ip = iface.address;
-        instructions_text += ifname + " " + iface.address + "<br>";
+        instructions_text += iface.address + "<br>";
         }
         ++alias;
     });
     });
 
-    instructions_text += "<br>" + `Collegare il dispositivo PILOTA a: https://${device_ip}:${port_pilot}` + "<br>";
-    instructions_text += `Collegare il dispositivo ROBOT a:  https://${device_ip}:${port_robot}` + "<br>";
+    // instructions_text += "<br>" + `Collegare il dispositivo PILOTA a: https://${device_ip}:${port_pilot}` + "<br>";
+    // instructions_text += `Collegare il dispositivo ROBOT a:  https://${device_ip}:${port_robot}` + "<br>";
+    instructions_text += "<br>Aprire Google Chrome sul dispositivo PILOTA all'indirizzo<br>";
+    instructions_text += "<h3>https://IP_ADDRESS:3333</h3><br>"
     instructions_text += "##################<br>";
        
     console.log('');
