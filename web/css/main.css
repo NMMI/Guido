@@ -1,0 +1,102 @@
+/*
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+ */
+
+ /*button {
+    margin: 20px 10px 0 0;
+    width: 100px;
+  }*/
+  button#dockingButton{
+    background-color: white;
+    border: none;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0.7em 0.6em 0.7em;
+  }
+  div#audio{
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+  }
+
+  div#scan_conn{
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+  }
+
+  button#but_sidebar{
+    width: 300px;
+  }
+  
+  div#buttons {
+    margin: 0 0 20px 0;
+  }
+  
+  div#status {
+    height: 2em;
+    margin: 1em 0 0 0;
+  }
+  div#container_text{
+    /*background-image: url('img/logo_lhf.png');
+    position:absolute;
+    top:0;
+    right:0;*/
+  }
+  
+  input#audio {
+    margin: 0 0.5em 0 0;
+    position: relative;
+    top: -1px;
+  }
+  
+  video#video2_pilot {
+    height: 93vh;
+    width: auto;
+    float: left;
+  }
+  
+  video#video1_pilot {
+    position:absolute;
+    height: 10%;
+    width: auto;
+    border-radius: 10px;
+  }
+
+  video#video2_robot {
+    height: 79vh;
+    width: auto;
+    float: left;
+  }
+  
+  video#video1_robot {
+    position:absolute;
+    height: 10%;
+    width: auto;
+    border-radius: 10px;
+  }
+
+  /*div#videos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+  .zone.dynamic {
+  background: rgba(0, 0, 255, 0.1);
+}
+
+.zone.semi {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.zone.static {
+  background: rgba(255, 0, 0, 0.1);
+}

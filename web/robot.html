@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <!-- <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png"> -->
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>LHF-connect Robot</title>
+
+    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="web/css/main_generic.css"/>
+    <link rel="stylesheet" href="web/css/main.css"/>
+    <link rel="stylesheet" href="web/css/sidebar.css">
+    <link rel="stylesheet" href="web/css/toggle.css">
+
+    <!-- ********************************************BLE browser STUFF*****************************************************-->
+    <meta charset="utf-8">
+    <!-- <title>root robot BLE browser</title> -->
+    <link rel="stylesheet" type="text/css" href="css/root-ble/styles.css">
+    <!-- *******************************************************************************************************************-->
+
+
+</head>
+
+<body>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script> -->
+    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+
+        <!-- Sidebar -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+      <button id="close" onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+
+      <!-- Rounded switch -->
+      <div id= "scan_conn">
+            <label class="switch">
+                <input type="checkbox" id="scan_conn" onchange="switch_function_scan_conn(this)">
+                <span class="slider round"></span>
+            </label>
+        scan&conn</div>
+
+        <div id= "audio">
+            <label class="switch">
+                <input type="checkbox" id="audio" onchange="switch_function(this)" checked>
+                <span class="slider round"></span>
+            </label>
+        audio</div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="w3-teal">
+      <button id="but_sidebar" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰ LHF-connect Robot</button>
+      <!--div class="w3-container" style = "float: center">
+        <h1>LHF-connect Pilot</h1>
+      </div-->
+    </div>
+
+<!-- ********************************************BLE browser STUFF*****************************************************-->
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+
+<!-- <h1>Root Robot Bluetooth Low Energy Protocol Implementation in Javascript</h1> -->
+
+
+
+
+<!-- *******************************************************************************************************************-->
+
+
+<div id="container">
+    <div id="container_text">
+        <div id="ip_address"></div>
+
+        <!--button class="btn" id="btnScanAndConnect">Scan and connect</button>
+        <button class="btn" id="btnDisconnect" disabled>Disconnect</button-->
+
+        <!-- <button class="btn" id="moveBtn" disabled>Muovi robot</button> -->
+        <button class="btn" id="rotateBtn" >Ruota A Sinistra</button>
+        <button class="btn" id="rotateAnversaBtn" >Ruota A Destra</button>
+        <button class="btn" id="forwardBtn" >Avanti</button>
+        <button class="btn" id="backwardBtn" >Indietro</button>
+        <button class="btn" id="stopBtn" >Stop robot</button>
+
+
+        <div id="div_num_recv"># num_recv = 0</div>
+    </div>
+
+
+    <div id="videos">
+            <video id="video1_robot" playsinline autoplay muted></video>
+            <video id="video2_robot" playsinline autoplay ></video>
+    </div>
+
+
+
+</div>
+
+<!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+<!-- <script src="js/videopipe.js"></script> -->
+<!-- <script type="text/javascript" src="js/root-ble/root.min.js"></script> -->
+<script type="text/javascript" src="web/js/root-ble/lib/crc8.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/event_dispatcher.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/ble_device.js"></script>
+
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/general.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/motors.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/marker_eraser.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/led_lights.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/color_sensor.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/sound.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/bumpers.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/light_sensors.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/battery.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/touch_sensors.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/device/cliff_sensor.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/ble_profile.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/root.js"></script>
+<script type="text/javascript" src="web/js/root-ble/lib/root/root.js"></script>
+<script type="text/javascript" src="web/js/root-ble/main.js"></script>
+<script src="web/js/robot.js" async></script>
+
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<!-- Google Analytics stuff... do we need it? -->
+<!-- <script src="../../../js/lib/ga.js"></script> -->
+
+</body>
+</html>

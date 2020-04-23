@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "name": "Guido",
+    "app-name": "Guido",
+    "package-name": "webview",
+    "project-type": "webview",
+    "icon": "./web/icon/android-icon-192x192.png",
+    "dist-path": "./dist",
+    "permission": [
+        "android.permission.INTERNET"
+    ],
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start:dev": "node .",
+        "build": "androidjs build"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "androidjs": "^2.0.2",
+        "express": "^4.17.1",
+        "nipplejs": "^0.8.5",
+        "open": "^7.0.3",
+        "openurl": "^1.1.1",
+        "websocket": "^1.0.31"
+    },
+    "theme": {
+        "fullScreen": true
+    }
+}

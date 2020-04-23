@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+-->
+<html>
+<head>
+
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <!-- <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png"> -->
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>LHF-connect Pilot</title>
+
+    <!-- <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png"> -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="web/css/main_generic.css"/>
+    <link rel="stylesheet" href="web/css/main.css"/>
+    <link rel="stylesheet" href="web/css/sidebar.css">
+    <link rel="stylesheet" href="web/css/toggle.css">
+
+
+</head>
+
+<body>
+
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+    <!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <button id="dockingButton">Docking station</button>
+  <!-- Rounded switch -->
+  <div id= "scan_conn">
+            <label class="switch">
+                <input type="checkbox" id="scan_conn" onchange="switch_scan_conn(this)" checked>
+                <span class="slider round"></span>
+            </label>
+        scan&conn</div>
+
+    <div id= "audio">
+        <label class="switch">
+            <input type="checkbox" id="audio"  onchange="switch_function(this)" checked>
+            <span class="slider round"></span>
+        </label>
+    audio</div>
+
+    <!--div id= "video_toggle">
+        <label class="switch">
+            <input type="checkbox" id="video_toggle"  onchange="switch_function_video(this)" checked>
+            <span class="slider round"></span>
+        </label>
+    video</div-->
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+  <button id="but_sidebar" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰ LHF-connect Pilot</button>
+  <!--div class="w3-container" style = "float: center">
+    <h1>LHF-connect Pilot</h1>
+  </div-->
+</div>
+
+<div id="container">
+
+    <div id="videos">
+        <video id="video1_pilot" playsinline autoplay muted></video>
+        <video id="video2_pilot" playsinline autoplay ></video>
+    </div>
+
+    <div id="container_text">
+        <div id="div_num_recv"># cmds = 0</div>
+        <div id="ip_address"></div>
+        <div id="single_joy"></div>
+    </div>
+
+    <!--div id="messages">
+        <ul id="messages"></ul>
+        <form action="">
+        <input id="messageText" autocomplete="off" />
+        </form>
+        <button id="messageBtn">Invia messaggio</button>
+    </div-->
+
+</div>
+
+<!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+<!-- <script src="js/videopipe.js"></script> -->
+
+
+<script src="../node_modules/nipplejs/dist/nipplejs.js"></script>
+
+<script>
+    var joystick = nipplejs.create({
+        zone: document.getElementById('single_joy'),
+        mode: 'static',
+        position: { left: '80%', top: '50%' },
+        color: 'green',
+        size: 200
+    });
+
+</script>
+<script src="web/js/pilot.js" async></script>
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+
+<!--script src="test_joystick.js" async></script-->
+
+
+<!-- Google Analytics stuff... do we need it? -->
+<!-- <script src="../../../js/lib/ga.js"></script> -->
+
+</body>
+</html>

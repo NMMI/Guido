@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../node_modules/androidjs/lib/androidjs.js"></script>
+  </head>
+
+  <style>
+    .app{
+    font-size:30px;
+    }
+    a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+  </style>
+
+  <body>
+
+    <div class="container h-100 d-flex justify-content-center">
+      <div class="jumbotron my-auto">
+	<h3 class="display-3" id='msg'>Guido</h3>
+	<br>
+	<h3 class="display-3" id='ip_list'></h3>
+      </div>
+      <button type="button" onclick="startRobotServer()" id="startServerBtn">Avvia Server</button>
+      <!-- <button type="button" onclick="startRobotPage()" id="startRobotBtn" disabled>Avvia Robot</button> -->
+      <!-- <a href="https://127.0.0.1:4444" target="_blank">puppa</a> -->
+      <div class="jumbotron my-auto" id="startRobotDiv">
+
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src = "../assets/script.js"></script>
+    <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+    <style type="text/css">
+      html, body {
+      height: 100%;
+      }
+
+      .container {
+      padding: 0px;
+      }
+
+      .display-3 {
+      font-size: 2.0rem;
+      }
+
+      .jumbotron {
+      background: #fff;
+      }
+
+    </style>
+    <script type="text/javascript">
+      <!-- front.send('Start','Guido'); -->
+      front.on('print',function(msg) {
+      console.log(msg);
+      var testo = document.getElementById("msg");
+      testo.innerText = msg;
+      });
+      front.on('ip_list',function(msg) {
+      console.log(msg);
+      var list = document.getElementById("ip_list");
+      list.innerText = msg;
+      //      document.location.href = "https://127.0.0.1:4444";
+      console.log(app);
+      //      app.loadURL("http://www.roboteamitalia.it/"); // works
+      //      app.loadURL("https://172.20.10.3:4444");
+      //window.open("https://www.google.it");
+      //      document.location.href ="intent://127.0.0.1:4444#Intent;scheme=http;package=com.android.chrome;end";
+            // document.location.href ="https://127.0.0.1:4444";
+      var startServerBtn = document.getElementById("startServerBtn");
+      startServerBtn.disabled = true;
+      // var startRobotBtn = document.getElementById("startRobotBtn");
+      // startRobotBtn.disabled = false;
+      // create link
+      var a = document.createElement('a');
+      var linkText = document.createTextNode("Avvia Robot");
+      a.appendChild(linkText);
+      a.title = "Avvia Robot";
+      a.href = "https://127.0.0.1:4444";
+      a.target ="_blank";
+      // document.body.appendChild(a);
+      var startRobotDiv = document.getElementById("startRobotDiv");
+      startRobotDiv.appendChild(a);
+      });
+      function startRobotServer() {
+        front.send('Start','Guido');
+        var testo = document.getElementById("msg");
+        testo.innerText = "Attendere pochi istanti";
+        
+      }
+      // function startRobotPage() {
+      //   var startRobotLink = document.getElementById("startRobot");
+        
+      // }
+      
+    </script>
+  </body>
+
+</html>
