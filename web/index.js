@@ -65,7 +65,7 @@ app_pilot.use(express.static(__dirname));
 app_pilot.get("/", function(req, res) {
     console.log("Pilot is connecting");
     lastConnectionRequestUsername = "PILOT";
-    res.sendFile(path.resolve(__dirname,'pilot.html'));
+    res.sendFile(path.resolve(__dirname,'web/pilot.html'));
 
 });
 
@@ -91,7 +91,7 @@ app_robot.use(express.static(__dirname));
 app_robot.get("/", function(req, res) {
     console.log("Robot is connecting");
     lastConnectionRequestUsername = "ROBOT";
-    res.sendFile(path.resolve(__dirname,'robot.html'));
+    res.sendFile(path.resolve(__dirname,'web/robot.html'));
 });
 
 const port_robot = 4444;
@@ -369,6 +369,10 @@ wsServer.on('request', function(request) {
         // by that name.
   
         switch(msg.type) {
+          case "video-answer":
+            console.log("Video answer message :::::::::::::");
+            console.log(msg);
+            break;
           // Rebound notification of disconnection
           case "disconnecting":
             console.log("Received disconnecting message from: " + msg.name);

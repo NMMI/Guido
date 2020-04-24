@@ -396,6 +396,9 @@ function handleSignalingStateChangeEvent(event) {
 // begin, resume, or restart ICE negotiation.
 var Negotiation = 0;
 async function handleNegotiationNeededEvent() {
+  console.log("___________________________");
+  console.log("__ NEGOTIATION NEEDED _____");
+  console.log("___________________________");
   if(Negotiation === 0 )
   {
       Negotiation++;
@@ -428,6 +431,9 @@ async function handleNegotiationNeededEvent() {
     // Send the offer to the remote peer.
 
     console.log("---> Sending the offer to the remote peer");
+    console.log("___________________________");
+    console.log("__ SENDING VIDEO OFFER_____");
+    console.log("___________________________");
     sendToServer({
       name: myUsername,
       target: targetUsername,
