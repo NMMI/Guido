@@ -570,8 +570,9 @@ function connect() {
 
       case "disconnecting":
         console.log("Received disconnecting message from: " + msg.name);
-        closeVideoCall();
-        window.location.reload(false); 
+        Negotiation = 0;
+        // closeVideoCall();
+        // window.location.reload(false); 
         // handleHangUpMsg(msg);
         break;
 

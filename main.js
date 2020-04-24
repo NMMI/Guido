@@ -35,6 +35,8 @@ back.on('Start', function(msg) {
 //
 //server();
 
+
+
 function server() {
   // #### Put index.js content here
 
@@ -46,6 +48,7 @@ function server() {
 //     get('/', ctx => 'Ciao')
 // ])
 
+'use strict';
 
 const https = require('https');
 const fs = require('fs');
@@ -54,6 +57,7 @@ var express = require('express');
 var WebSocketServer = require('websocket').server;
 var count = 0;
 // var appendToMakeUnique = 0;
+var instructions_text ="";
 
 var lastConnectionRequestUsername = "";
 
