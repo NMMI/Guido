@@ -16,7 +16,7 @@ var instructions_text ="";
 var back = require('androidjs').back;
 back.on('Start', function(msg) {
     back.send('print',`Hello ${msg}`);
-    server();
+    guido_server.server();
     back.send('print',`Hello ${msg}`);
 //    require("openurl").open("https://127.0.0.1:4444");
     back.send('ip_list',instructions_text);
