@@ -8,7 +8,7 @@
 
 'use strict';
 
-const guido_server = require('../LHF_rtc/web/guido_server.js');
+const guido_server = require('./LHF_rtc/web/guido_server.js');
 
 // Android stuff
 var instructions_text ="";
